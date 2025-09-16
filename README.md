@@ -23,6 +23,37 @@ To use MetaMark, you **must** have:
 
 ---
 
+## 🧠 Prerequisites: Ollama with Vision Model
+
+MetaMark requires [Ollama](https://ollama.com) to be running as a background service with a vision-enabled model.
+
+### ✅ Steps
+
+1. Install Ollama:  
+   [https://ollama.com/download](https://ollama.com/download)
+
+2. Start the Ollama API server:
+
+```
+ollama serve
+```
+
+3. Pull a vision-capable model (e.g. `qwen2.5vl:3b`):
+
+```
+ollama pull qwen2.5vl:3b 
+```
+
+4. MetaMark will connect to Ollama at `http://localhost:11434` by default.  
+   You can override this by setting:
+
+```
+export METAMARK_OLLAMA_URL=http://your-ollama-host:11434
+```
+
+Make sure the model supports image input. MetaMark sends base64-encoded images to `/api/generate`
+---
+
 ## 🚀 Quickstart (Photographers)
 
 1. Make sure [Docker](https://www.docker.com) is installed and running.
