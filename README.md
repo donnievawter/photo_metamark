@@ -38,10 +38,10 @@ MetaMark requires [Ollama](https://ollama.com) to be running as a background ser
 ollama serve
 ```
 
-3. Pull a vision-capable model (e.g. `qwen2.5vl:3b`):
+3. Pull a vision-capable model (e.g. `qwen2.5vl:7b`):
 
 ```
-ollama pull qwen2.5vl:3b 
+ollama pull qwen2.5vl:7b 
 ```
 
 4. MetaMark will connect to Ollama at `http://localhost:11434` by default.  
