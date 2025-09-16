@@ -1,0 +1,15 @@
+.venv
+__pycache__/
+*.log
+*.md
+*.whl
+tests/
+dist/
+.mypy_cache/
+.pytest_cache/
+.env
+.git
+imagein
+imageout
+
+

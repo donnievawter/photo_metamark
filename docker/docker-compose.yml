@@ -1,0 +1,16 @@
+version: '3.8'
+
+services:
+  metamark:
+    image: photo_metamark
+    container_name: photo_metamark
+    volumes:
+      - /Users/crow/projects/photo_metamark:/app
+      - /Users/crow/projects/photo_metamark/imagein:/input
+      - /Users/crow/projects/photo_metamark/imageout:/output
+    environment:
+      - METAMARK_MODEL=qwen2.5vl:7b
+
+    command: >
+      --verbose --ollama-url "http://crow.lan:11434" --model qwen2.5vl:7b --watch
+    restart: "no"

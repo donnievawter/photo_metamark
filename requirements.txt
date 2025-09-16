@@ -1,0 +1,11 @@
+Pillow>=10.0.0           # Image loading and format support
+#piexif>=1.1.3            # EXIF manipulation (JPEG metadata)
+#exiftool-wrapper>=0.1.5  # Optional: wrapper for robust IPTC/XMP embedding
+#transformers>=4.35.0     # Local model inference (captioning/tagging)
+#torch>=2.1.0             # Backend for model execution
+#click>=8.1.3             # CLI framework with dry-run support
+#rich>=13.6.0             # Optional: pretty CLI output and logging
+rawpy==0.25.0             # RAW image decoding
+imageio==2.37.0         # RAW image decoding
+pillow-heif==1.1.0       # HEIC/HEIF image support
+requests==2.31.0
