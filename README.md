@@ -34,9 +34,14 @@ docker pull ghcr.io/donnievawter/metamark:latest
 ```
 
 3. Run MetaMark using the provided wrapper script:
+    From a terminal:
 
 ```
+curl -O https://raw.githubusercontent.com/donnievawter/photo_metamark/main/metamark.sh
+chmod +x metamark.sh
 bash metamark.sh ~/Pictures ~/PicturesOut
+
+
 ```
 
 This will process all images in `~/Pictures` and write results to `~/PicturesOut`.
