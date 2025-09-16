@@ -30,7 +30,7 @@ To use MetaMark, you **must** have:
 2. Pull the MetaMark image from GitHub Container Registry:
 
 ```
-docker pull ghcr.io/donnievawter/metamark:latest
+docker pull ghcr.io/donnievawter/photo_metamark/metamark:latest
 ```
 
 3. Run MetaMark using the provided wrapper script:
