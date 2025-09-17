@@ -44,7 +44,7 @@ ollama serve
 ollama pull qwen2.5vl:7b 
 ```
 
-4. MetaMark will connect to Ollama at `http://localhost:11434` by default.  
+4. MetaMark will connect to Ollama at `http://host.docker.internal:11434` by default. (which is local host on the containers host machine)  
    You can override this by setting:
 
 ```

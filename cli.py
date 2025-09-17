@@ -79,7 +79,7 @@ def main():
     )
     parser.add_argument(
         "--ollama-url",
-        default="http://localhost:11434",
+        default="http://host.docker.internal:11434",
         help="url for Ollama API",
     )
 
