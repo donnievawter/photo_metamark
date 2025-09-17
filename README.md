@@ -107,8 +107,8 @@ docker run --rm \
   -v ~/Pictures:/input \
   -v ~/PicturesOut:/output \
   -v $(pwd)/prompts:/prompts \
-  metamark \
-  /entrypoint.sh --input /input --output /output
+  metamark 
+  
 ```
 
 ---
