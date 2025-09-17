@@ -144,6 +144,60 @@ MetaMark supports the following flags:
 
 ---
 
+## 🧠 Supported Formats & Metadata Output
+
+MetaMark processes a wide range of image formats and writes results directly into standard metadata fields, making them visible in tools like **Lightroom**, **Adobe Bridge**, **Immich**, and other DAM systems.
+
+### ✅ Supported Image Formats
+
+| Format Type     | Extensions                                                                 |
+|------------------|---------------------------------------------------------------------------|
+| Native formats   | `.jpg`, `.jpeg`, `.png`, `.tif`, `.tiff`                                  |
+| RAW formats      | `.cr2`, `.nef`, `.arw`, `.dng`, `.rw2`, `.orf`, `.raf`, `.sr2`            |
+| HEIF formats     | `.heic`, `.heif`                                                          |
+
+MetaMark preserves your original image format. All metadata is written directly into the original file—no conversions or replacements.
+
+---
+
+### 🧩 Metadata Fields Written by MetaMark
+
+MetaMark uses `exiftool` to embed results directly into the image file. The following fields are updated:
+
+| Field                  | Tag Name                | Content Written                        |
+|------------------------|-------------------------|----------------------------------------|
+| Headline               | `IPTC:Headline`         | `"MetaMark Inference"`                 |
+| Editor/Model           | `IPTC:Writer-Editor`    | Model name used for inference          |
+| Keywords               | `IPTC:Keywords`         | Comma-separated list of inferred tags  |
+| Subjects               | `XMP-dc:Subject`        | Same as keywords (for XMP compatibility) |
+| Description            | `Description`           | Inferred image description             |
+| Prompt used            | `XMP-dc:Title`          | Prompt string used for inference       |
+
+All metadata is written **in-place** using `-overwrite_original`, so the original file is updated directly.
+
+---
+
+### 🔍 Viewing Metadata
+
+These fields are visible in:
+
+- **Adobe Lightroom** (Library → Metadata panel)
+- **Adobe Bridge** (File Info → IPTC/XMP tabs)
+- **Immich** (under Tags and Description)
+- Any tool that supports IPTC/XMP standards
+
+To inspect metadata manually:
+
+```bash
+exiftool -IPTC:Keywords -Description -XMP-dc:Title yourimage.jpg
+```
+
+---
+
+MetaMark writes metadata in standard fields to ensure compatibility across platforms and workflows.
+
+---
+
 ## 🧠 Philosophy
 
 MetaMark is local-first, restart-safe, and modular. It doesn’t phone home, doesn’t require cloud APIs, and doesn’t assume you want to share your photos with anyone but future-you.
