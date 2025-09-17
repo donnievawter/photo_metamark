@@ -14,21 +14,9 @@ def validate_ollama(ollama_url: str, model: str, timeout: int = 10, log=None):
         log.error(st)
         sys.exit(1)
 
-    token = os.getenv("OLLAMA_TOKEN")
-    headers = {}
-
-    if "ollama.vawter.com" in ollama_url:
-        if not token:
-            log.warning("⚠️ OLLAMA_TOKEN is missing—access may fail")
-        else:
-            headers["X-Ollama-Token"] = token
-            log.info(f"Using token: {token}")
-
     response = None
     try:
-        response = requests.get(
-            f"{ollama_url}/api/tags", headers=headers, timeout=timeout
-        )
+        response = requests.get(f"{ollama_url}/api/tags", timeout=timeout)
         response.raise_for_status()
     except Exception as e:
         print(f"❌ Failed to reach Ollama at {ollama_url}: {e}")
