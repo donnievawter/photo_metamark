@@ -5,10 +5,10 @@ description = "Add your description here"
 readme = "README.md"
 requires-python = ">=3.13"
 dependencies = [
-Pillow>=10.0.0           # Image loading and format support
-rawpy==0.25.0             # RAW image decoding
-imageio==2.37.0         # RAW image decoding
-pillow-heif==1.1.0       # HEIC/HEIF image support
-requests==2.31.0
+    "Pillow>=10.0.0",
+    "requests>=2.31.0",
+    "tqdm>=4.66.0",
+    "python-dotenv>=1.0.0",
+    "loguru>=0.7.0",
 
 ]

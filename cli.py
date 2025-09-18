@@ -55,7 +55,7 @@ def main():
     parser.add_argument("--dry-run", action="store_true")
     parser.add_argument("--log-dir", default="./logs", help="Directory to save logs")
     parser.add_argument("--verbose", action="store_true", help="Enable verbose logging")
-    default_model = os.getenv("METAMARK_MODEL", "qwen2.5vl:7b")
+    default_model = os.getenv("METAMARK_MODEL", "qwen2.5vl:3b")
     parser.add_argument(
         "--model", default=default_model, help="Model to use with Ollama"
     )
@@ -65,10 +65,12 @@ def main():
         default="prompts/default.txt",
         help="Path to prompt file for model guidance",
     )
+
+
     parser.add_argument(
         "--ollama-url",
-        default="http://host.docker.internal:11434",
-        help="url for Ollama API",
+        default=os.getenv("METAMARK_OLLAMA_URL", "http://host.docker.internal:11434"),
+        help="URL for Ollama API. Can also be set via METAMARK_OLLAMA_URL env var.",
     )
 
     args = parser.parse_args()

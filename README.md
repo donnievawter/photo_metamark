@@ -38,10 +38,10 @@ MetaMark requires [Ollama](https://ollama.com) to be running as a background ser
 ollama serve
 ```
 
-3. Pull a vision-capable model (e.g. `qwen2.5vl:7b`):
+3. Pull a vision-capable model (e.g. `qwen2.5vl:3b`):
 
 ```
-ollama pull qwen2.5vl:7b 
+ollama pull qwen2.5vl:3b 
 ```
 
 4. MetaMark will connect to Ollama at `http://host.docker.internal:11434` by default. (which is local host on the containers host machine)  
@@ -55,6 +55,8 @@ Make sure the model supports image input. MetaMark sends base64-encoded images t
 ---
 
 ## 🚀 Quickstart (Photographers)
+
+If you are running on linux you are *ipso facto* a techie so go to that section
 
 1. Make sure [Docker](https://www.docker.com) is installed and running.
 
@@ -84,6 +86,46 @@ bash metamark.sh ~/Pictures ~/PicturesOut --watch
 ```
 
 ---
+
+### 🐧 Linux: Connecting MetaMark to Ollama on Host
+
+If you're running MetaMark inside Docker and Ollama on your Linux host:
+
+1. **Expose Ollama beyond localhost**  
+   Start Ollama with:
+
+   ```bash
+   ollama serve --host 0.0.0.0
+   ```
+
+   or if running as a systemd service add the following line to ollama.service:
+
+   ```bash
+   Environment="OLLAMA_HOST=0.0.0.0:11434"
+   ```
+
+2. **Make host reachable from container**  
+   Run MetaMark with:
+
+   ```bash
+   docker run --add-host=host.docker.internal:host-gateway ...
+   ```
+
+   This allows the default URL (`http://host.docker.internal:11434`) to work inside the container.
+
+3. **Override only if needed**  
+   You only need to set `METAMARK_OLLAMA_URL` (via `-e` flag) if you're using:
+   - A custom DNS name (`ollama.lan`, `ollama.local`)
+   - A remote server
+   - A non-default port
+
+   Example:
+
+   ```bash
+   docker run \
+     -e METAMARK_OLLAMA_URL=http://ollama.lan:11434 \
+     ...
+   ```
 
 ## 🧑‍💻 Quickstart (Techies)
 
